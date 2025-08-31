@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Scrapius – __ORG_ID__",
+  "version": "0.1.0",
+  "description": "Scrapius helper extension",
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "src/ui/popup.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "assets/content.ts-BvN9uJqp.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "assets/content.ts-BvN9uJqp.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}

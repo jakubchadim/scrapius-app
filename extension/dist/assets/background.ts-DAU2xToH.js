@@ -1,0 +1,1 @@
+const s="__API_BASE_URL__",c="__API_TOKEN__",r="__ORG_ID__";chrome.runtime.onInstalled.addListener(()=>{console.log("Scrapius extension installed for org",r)});chrome.action.onClicked.addListener(async()=>{try{const o=await(await fetch(`${s}/api/v1/scrapers`,{headers:{"X-API-Key":c}})).json();console.log("Scrapers",o)}catch(e){console.error("Failed to fetch scrapers",e)}});

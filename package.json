@@ -1,0 +1,16 @@
+{
+  "name": "scrapius-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9",
+  "workspaces": ["app", "extension"],
+  "scripts": {
+  "prebuild": "pnpm -w run build:extension && node scripts/copy-extension.js",
+  "build": "pnpm -w -r run build",
+  "build:extension": "pnpm --filter scrapius-extension run build",
+  "build:app": "pnpm --filter scrapius-app run build",
+  "dev": "pnpm --filter scrapius-app run dev",
+    "lint": "pnpm -w -r run lint",
+    "typecheck": "pnpm -w -r run typecheck",
+    "format": "pnpm -w -r run format"
+  }
+}
