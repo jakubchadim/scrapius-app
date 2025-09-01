@@ -1,8 +1,5 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/scrapers/[id]/page": "app/scrapers/[id]/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
   "/page": "app/page.js",
   "/scrapers/page": "app/scrapers/page.js",
-  "/api/extension/download/route": "app/api/extension/download/route.js"
+  "/scrapers/[id]/page": "app/scrapers/[id]/page.js"
 }

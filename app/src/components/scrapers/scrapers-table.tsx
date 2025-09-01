@@ -5,7 +5,19 @@ import { Badge } from '@/components/ui/badge'
 import type { Scraper } from '@/types'
 import { Button } from '@/components/ui/button'
 
-export function ScrapersTable({ scrapers }: { scrapers: Scraper[] }) {
+export function ScrapersTable({ scrapers, onCreate }: { scrapers: Scraper[]; onCreate?: () => void }) {
+  if (!scrapers.length) {
+    return (
+      <div className="text-center py-12">
+        <div className="text-slate-300">No scrapers yet.</div>
+        <div className="mt-4">
+          {onCreate && (
+            <Button className="button-primary" onClick={onCreate}>Create your first scraper</Button>
+          )}
+        </div>
+      </div>
+    )
+  }
   return (
     <Table>
       <TableHeader>

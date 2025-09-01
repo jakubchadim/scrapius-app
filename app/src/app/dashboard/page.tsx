@@ -14,7 +14,7 @@ export default function DashboardPage() {
       <h1 className="text-3xl font-semibold tracking-tight">Dashboard</h1>
       <p className="mt-2 text-slate-300">Your API token and quick actions.</p>
 
-      <Card className="mt-6 bg-white/5 border border-white/10 backdrop-blur">
+      <Card className="bg-white/5 border border-white/10 backdrop-blur">
         <CardHeader>
           <CardTitle>Your API token</CardTitle>
         </CardHeader>
@@ -29,10 +29,17 @@ export default function DashboardPage() {
 
       <Card className="mt-6 bg-white/5 border border-white/10 backdrop-blur">
         <CardHeader>
-          <CardTitle>Scrapers</CardTitle>
+          <CardTitle>Your scrapers</CardTitle>
         </CardHeader>
         <CardContent>
-          <ScrapersTable scrapers={mockScrapers} />
+          {mockScrapers.length ? (
+            <ScrapersTable scrapers={mockScrapers} />
+          ) : (
+            <div className="text-center py-8">
+              <div className="text-slate-300">No scrapers yet.</div>
+              <Button className="button-primary mt-4">Create your first scraper</Button>
+            </div>
+          )}
         </CardContent>
       </Card>
     </main>

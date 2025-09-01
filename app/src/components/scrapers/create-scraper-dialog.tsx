@@ -7,19 +7,39 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 
-export function CreateScraperDialog() {
-  const [open, setOpen] = useState(false)
+import { useToast } from '@/hooks/use-toast'
+
+type CreateScraperInput = {
+  name: string
+  visibility: 'org' | 'private'
+  enabled: boolean
+}
+
+export function CreateScraperDialog({ onCreateScraper, open, onOpenChange }: { onCreateScraper?: (input: CreateScraperInput) => void; open?: boolean; onOpenChange?: (open: boolean) => void }) {
+  const [internalOpen, setInternalOpen] = useState(false)
+  const isControlled = open !== undefined
+  const actualOpen = isControlled ? open : internalOpen
+  const setOpen = (next: boolean) => {
+    onOpenChange?.(next)
+    if (!isControlled) setInternalOpen(next)
+  }
   const [name, setName] = useState('')
   const [visibility, setVisibility] = useState<'org' | 'private'>('org')
   const [enabled, setEnabled] = useState(true)
+  const { toast } = useToast()
 
-  function onCreate() {
-    // TODO: call API to create; for now just close
+  function handleCreate() {
+    onCreateScraper?.({ name, visibility, enabled })
     setOpen(false)
+    toast({ title: 'Scraper created', description: name || 'New scraper' })
+    // reset form
+    setName('')
+    setVisibility('org')
+    setEnabled(true)
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={actualOpen} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="button-primary">Create scraper</Button>
       </DialogTrigger>
@@ -55,7 +75,7 @@ export function CreateScraperDialog() {
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
-          <Button className="button-primary" onClick={onCreate}>Create</Button>
+          <Button className="button-primary" onClick={handleCreate}>Create</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
