@@ -1,5 +1,7 @@
 {
-  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/scrapers/page": "app/scrapers/page.js",
-  "/scrapers/[id]/page": "app/scrapers/[id]/page.js"
+  "/page": "app/page.js",
+  "/scrapers/[id]/page": "app/scrapers/[id]/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }

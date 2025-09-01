@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import Test from "@/app/dashboard/test";
 
 export default function Page() {
   return (
@@ -9,6 +10,7 @@ export default function Page() {
       <Card className="mt-8 bg-white/5 border border-white/10 backdrop-blur">
         <CardHeader>
           <CardTitle>Get started</CardTitle>
+            <Test />
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-4">

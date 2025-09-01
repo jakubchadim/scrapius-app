@@ -31,12 +31,14 @@ declare namespace __next_route_internal_types__ {
   type StaticRoutes = 
     | `/`
     | `/api/extension/download`
+    | `/api/internal/tokens`
+    | `/api/v1/scrapers`
     | `/api/scrapers`
     | `/dashboard`
     | `/scrapers`
   type DynamicRoutes<T extends string = string> = 
-    | `/api/scrapers/${SafeSlug<T>}`
     | `/api/auth/${CatchAllSlug<T>}`
+    | `/api/scrapers/${SafeSlug<T>}`
     | `/scrapers/${SafeSlug<T>}`
 
   type RouteImpl<T> = 

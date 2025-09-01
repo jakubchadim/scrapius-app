@@ -8,25 +8,25 @@ It is designed as a living document and includes a requirements checklist, archi
 
 ## ✅ Requirements checklist (living)
 
-- [ ] Monorepo at root: `app/` (Next.js, TypeScript), `extension/` (Chrome Extension, TypeScript)
-- [ ] Build chain: build `extension` before Next.js; copy `extension/dist` into `app`
-- [ ] Next.js endpoint that takes the built extension, injects client-specific values (token and metadata), performs string replace, creates a ZIP, and serves it for download
-- [ ] Authentication: OAuth login/registration + email/password (Credentials), custom pages for login/registration/reset password
-- [ ] Entire app behind login (except auth pages)
-- [ ] Dashboard: show user access token, download extension, manage scrapers
+- [x] Monorepo at root: `app/` (Next.js, TypeScript), `extension/` (Chrome Extension, TypeScript)
+- [x] Build chain: build `extension` before Next.js; copy `extension/dist` into `app`
+- [ ] Next.js endpoint that takes the built extension, injects client-specific values (token and metadata), performs string replace, creates a ZIP, and serves it for download (route scaffolded at `/api/extension/download`, implementation pending)
+- [ ] Authentication: OAuth login/registration + email/password (Credentials), custom pages for login/registration/reset password (Google OAuth wired via NextAuth; Credentials + custom pages pending)
+- [ ] Entire app behind login (except auth pages) (middleware pending)
+- [ ] Dashboard: show user access token, download extension, manage scrapers (page exists with token placeholder, download button, and scrapers overview)
 - [ ] Settings/Billing: Stripe subscription (webhooks, status, cancel/resume)
-- [ ] Scrapers management: CRUD, name, editable JS code, settings (see “Scraper Model”)
+- [ ] Scrapers management: CRUD, name, editable JS code, settings (see “Scraper Model”) (list + create UI done; detail skeleton; no code editor/DB yet)
 - [ ] Persistence in DB (Drizzle ORM + Turso/libSQL/SQLite), migrations
 - [ ] Scrapers related to accounts and organizations; roles and permissions: admin/user
 - [ ] User (member) can run scrapers, but cannot see or edit code
-- [ ] Workspaces/Organizations: user can create a workspace, join existing workspaces, and switch between them
+- [ ] Workspaces/Organizations: user can create a workspace, join existing workspaces, and switch between them (switcher UI only)
 - [ ] Roles are per-workspace (a user can be admin in one workspace and user in another)
 - [ ] Billing is tied to workspace (not user); seat-based pricing based on number of members
 - [ ] Multiple plans (e.g., Solo, Team, Enterprise) with different pricing/features
 - [ ] REST endpoint: with a token, return list of scrapers and user-facing info
 - [ ] REST endpoint: run a scraper (optional, if allowed by settings)
 - [ ] Tokens: per-workspace (organization) only in v1; rotation supported - need  to download new extension
-- [ ] No separate JS SDK in v1 (typed internal client only)
+- [x] No separate JS SDK in v1 (typed internal client only)
 - [ ] CI: lint, typecheck, build, tests; release pipeline; codegen from this spec
 
 ---

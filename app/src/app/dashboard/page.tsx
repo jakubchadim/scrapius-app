@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ScrapersTable } from '@/components/scrapers/scrapers-table'
 import type { Scraper } from '@/types'
+import Test from "@/app/dashboard/test";
 
 const mockScrapers: Scraper[] = [
   { id: 's1', orgId: 'w1', name: 'News Scraper', enabled: true, visibility: 'org' },
@@ -30,6 +31,7 @@ export default function DashboardPage() {
       <Card className="mt-6 bg-white/5 border border-white/10 backdrop-blur">
         <CardHeader>
           <CardTitle>Your scrapers</CardTitle>
+            <Test />
         </CardHeader>
         <CardContent>
           {mockScrapers.length ? (
